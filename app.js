@@ -35,8 +35,10 @@ app.use(grant);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-// TODO: Do I need both routes???
-app.use('/connect/yahoo/callback');
+// TODO: Do I need both routes??? The /connect/yahoo/callback
+// was needed so the OAuth flow wouldn't 404, but for our app
+// it isn't really doing anything, it seems?
+app.use('/connect/yahoo/callback', oauth);
 app.use('/handle_yahoo_callback', oauth);
 
 // catch 404 and forward to error handler
