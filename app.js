@@ -51,18 +51,7 @@ passport.deserializeUser(function(id, done) {
 
 app.use('/', routes);
 app.use('/users', users);
-// app.use('/hi', hi);
 app.use(oauth);
-
-// app.get('/auth/yahoo',
-//   passport.authenticate('yahoo'));
-//
-// app.get('/auth/yahoo/callback',
-//   passport.authenticate('yahoo', { failureRedirect: '/login' }),
-//   function(req, res) {
-//     // Successful authentication, redirect home.
-//     res.redirect('/');
-//   });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

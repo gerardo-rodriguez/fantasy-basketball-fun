@@ -34,21 +34,21 @@ passport.use(new YahooStrategy({
 router.get('/auth/yahoo', passport.authenticate('yahoo'));
 
 router.get('/auth/yahoo/callback',
-  passport.authenticate('yahoo', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    // TODO: Should this be something you can pass as a parameter? How?
-    res.redirect('/');
-  });
+  passport.authenticate(
+    'yahoo', {
+      successRedirect: '/',
+      failureRedirect: '/login'
+    }
+  )
+);
 
-// app.get('/auth/yahoo',
-//   passport.authenticate('yahoo'));
-//
-// app.get('/auth/yahoo/callback',
-//   passport.authenticate('yahoo', { failureRedirect: '/login' }),
+// app.post('/login',
+//   passport.authenticate('local'),
 //   function(req, res) {
-//     // Successful authentication, redirect home.
-//     res.redirect('/');
+//     // If this function gets called, authentication was successful.
+//     // `req.user` contains the authenticated user.
+//     res.redirect('/users/' + req.user.username);
 //   });
+
 
 module.exports = router;
