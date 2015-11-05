@@ -35,9 +35,9 @@ app.use(grant);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/connect/yahoo/callback', oauth);
+// TODO: Do I need both routes???
+app.use('/connect/yahoo/callback');
 app.use('/handle_yahoo_callback', oauth);
-// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
