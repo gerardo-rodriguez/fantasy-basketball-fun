@@ -12,6 +12,7 @@ var grant = new Grant(require('./config.json'));
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var oauth = require('./routes/oauth');
+var go = require('./routes/go');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/', routes);
 // it isn't really doing anything, it seems?
 app.use('/connect/yahoo/callback', oauth);
 app.use('/handle_yahoo_callback', oauth);
+app.use('/go', go);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
