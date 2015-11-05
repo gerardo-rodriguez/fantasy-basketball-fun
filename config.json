@@ -6,6 +6,7 @@
   "yahoo": {
     "key": "dj0yJmk9VTYxNlFEd014bnpDJmQ9WVdrOVNtZEtjRFZzTm04bWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xNw--",
     "secret": "c26c3cda6c3894d67d65bbe86292e24885073971",
-    "callback": "/handle_yahoo_callback"
+    "callback": "/handle_yahoo_callback",
+    "transport": "session"
   }
 }
