@@ -5,16 +5,27 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // Add OAuth modules
+var FantasySports = require('FantasySports');
 var session = require('express-session');
-var Grant = require('grant-express');
-var grant = new Grant(require('./config.json'));
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var oauth = require('./routes/oauth');
+var callback = require('./routes/callback');
 var go = require('./routes/go');
 
 var app = express();
+
+var FantasySports = require('FantasySports');
+FantasySports.options({
+  'accessTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_request_token',
+  'requestTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_token',
+  'oauthKey': 'dj0yJmk9VTYxNlFEd014bnpDJmQ9WVdrOVNtZEtjRFZzTm04bWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xNw--',
+  'oauthSecret': 'c26c3cda6c3894d67d65bbe86292e24885073971',
+  'version': '1.0',
+  'callback': 'http://fantasy-basketball-fun.herokuapp.com/auth/oauth/callback',
+  'encryption': 'HMAC-SHA1'
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,15 +43,11 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-app.use(grant);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-// TODO: Do I need both routes??? The /connect/yahoo/callback
-// was needed so the OAuth flow wouldn't 404, but for our app
-// it isn't really doing anything, it seems?
-app.use('/connect/yahoo/callback', oauth);
-app.use('/handle_yahoo_callback', oauth);
+app.use('/auth/oauth', oauth);
+app.use('/auth/oauth/callback', callback);
 app.use('/go', go);
 
 // catch 404 and forward to error handler

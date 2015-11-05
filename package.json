@@ -12,10 +12,9 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "express-session": "^1.12.1",
-    "grant-express": "^3.5.2",
+    "fantasysports": "^0.3.0",
     "hbs": "~3.1.0",
     "morgan": "~1.6.1",
-    "node-rest-client": "^1.5.1",
     "serve-favicon": "~2.3.0"
   }
 }

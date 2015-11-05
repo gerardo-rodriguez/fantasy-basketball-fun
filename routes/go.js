@@ -1,27 +1,29 @@
 var express = require('express');
-var Client = require('node-rest-client').Client;
-var client = new Client();
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
+  // We have the access token and access secret!!!
   console.log('session:', req.session);
 
-  // client.get('http://fantasysports.yahooapis.com/fantasy/v2/league/', function(data, response) {
-  //
-  //   console.log('data', data);
-  //   console.log('response', response);
-  //
-  //   if (response.statusCode != 200) {
-  //     res.send(response.headers.status);
-  //     return;
-  //   }
-  //
-  //   res.render('index', { stuff: data });
-  // });
+  FantasySports
+    .request(req, res)
+    .api('http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json')
+    .done(function(data) {
+      var leagueData = data.fantasy_content.users[0].user[1].games[0].game[1].leagues,
+          leagues = [];
 
-  res.render('index', { title: 'API me!' });
+      _.each(leagueData, function(value) {
+        if (value.league) {
+          leagues.push(value.league[0]);
+        }
+      });
+
+      res.json(leagues);
+    });
+
+  // res.render('index', { title: 'API me!' });
 });
 
 module.exports = router;
