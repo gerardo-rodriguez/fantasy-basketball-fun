@@ -4,8 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var passport = require('passport');
-var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -23,31 +21,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({ 
-  secret: 'secret sauce',
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Passport session setup.
-//   To support persistent login sessions, Passport needs to be able to
-//   serialize users into and deserialize users out of the session.  Typically,
-//   this will be as simple as storing the user ID when serializing, and finding
-//   the user by ID when deserializing.  However, since this example does not
-//   have a database of user records, the complete Yahoo profile is
-//   serialized and deserialized.
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
 
 app.use('/', routes);
 app.use('/users', users);

@@ -1,22 +1,6 @@
 var express = require('express');
-var passport = require('passport');
-var YahooStrategy = require('passport-yahoo-oauth').Strategy;
 var router = express.Router();
 
-// Passport session setup.
-//   To support persistent login sessions, Passport needs to be able to
-//   serialize users into and deserialize users out of the session.  Typically,
-//   this will be as simple as storing the user ID when serializing, and finding
-//   the user by ID when deserializing.  However, since this example does not
-//   have a database of user records, the complete Yahoo profile is
-//   serialized and deserialized.
-// passport.serializeUser(function(user, done) {
-//   done(null, user);
-// });
-
-// passport.deserializeUser(function(obj, done) {
-//   done(null, obj);
-// });
 
 // TODO: Put the consumerKey and consumerSecret in a safer place!!!
 passport.use(new YahooStrategy({
@@ -41,14 +25,5 @@ router.get('/auth/yahoo/callback',
     }
   )
 );
-
-// app.post('/login',
-//   passport.authenticate('local'),
-//   function(req, res) {
-//     // If this function gets called, authentication was successful.
-//     // `req.user` contains the authenticated user.
-//     res.redirect('/users/' + req.user.username);
-//   });
-
 
 module.exports = router;
