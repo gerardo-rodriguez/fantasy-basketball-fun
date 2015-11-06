@@ -13,6 +13,7 @@ var users = require('./routes/users');
 var oauth = require('./routes/oauth');
 var callback = require('./routes/callback');
 var go = require('./routes/go');
+var leagues = require('./routes/leagues');
 var league = require('./routes/league');
 
 var app = express();
@@ -49,6 +50,7 @@ app.use('/', routes);
 app.use('/auth/oauth', oauth);
 app.use('/auth/oauth/callback', callback);
 app.use('/go', go);
+app.use('/leagues/', leagues);
 app.use('/league/', league);
 
 // catch 404 and forward to error handler
