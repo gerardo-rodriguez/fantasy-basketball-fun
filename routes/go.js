@@ -1,4 +1,5 @@
 var express = require('express');
+var FantasySports = require('fantasysports');
 var router = express.Router();
 
 /* GET home page. */

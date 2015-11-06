@@ -1,5 +1,5 @@
 var express = require('express');
-var FantasySports = require('FantasySports');
+var FantasySports = require('fantasysports');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
