@@ -14,6 +14,7 @@
     "express-session": "^1.12.1",
     "fantasysports": "^0.3.0",
     "hbs": "~3.1.0",
+    "lodash": "^3.10.1",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
   }

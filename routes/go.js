@@ -1,5 +1,6 @@
 var express = require('express');
 var FantasySports = require('fantasysports');
+var _ = require('lodash');
 var router = express.Router();
 
 /* GET home page. */
