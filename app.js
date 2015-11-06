@@ -16,7 +16,6 @@ var go = require('./routes/go');
 
 var app = express();
 
-var FantasySports = require('FantasySports');
 FantasySports.options({
   'accessTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_request_token',
   'requestTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_token',
