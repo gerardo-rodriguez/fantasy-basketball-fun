@@ -1,0 +1,28 @@
+[
+  {
+    "league_key":"353.l.104969",
+    "league_id":"104969",
+    "name":"Liga Del Noroeste",
+    "url":"http://basketball.fantasysports.yahoo.com/nba/104969",
+    "password":"",
+    "league_chat_id":"962hwbiqhx9io5kruam0udd6ep9ueie",
+    "draft_status":"postdraft",
+    "num_teams":14,
+    "edit_key":"2015-11-05",
+    "weekly_deadline":"intraday",
+    "league_update_timestamp":"1446710028",
+    "scoring_type":"headone",
+    "league_type":"private",
+    "renew":"342_62769",
+    "renewed":"",
+    "short_invitation_url":"https://yho.com/nba?l=104969&ikey=4967151bb52d6663",
+    "is_pro_league":"0",
+    "current_week":2,
+    "start_week":"1",
+    "start_date":"2015-10-27",
+    "end_week":"22",
+    "end_date":"2016-04-03",
+    "game_code":"nba",
+    "season":"2015"
+  }
+]
