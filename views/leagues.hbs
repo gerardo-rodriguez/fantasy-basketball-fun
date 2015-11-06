@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+{{#if leagues}}
+  <h2>Your Leagues</h2>
+  <ul>
+  {{#each leagues}}
+    <li><a href="/league/{{this.league_key}}">{{this.name}}</a></li>
+  {{/each}}
+  </ul>
+{{else}}
+  <h2>Sorry...</h2>
+  <p>No leagues found. <a href="/">Go to home page</a></p>
+{{/if}}
