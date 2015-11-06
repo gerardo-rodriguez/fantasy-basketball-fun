@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // Add OAuth modules
-var FantasySports = require('FantasySports');
+var FantasySports = require('fantasysports');
 var session = require('express-session');
 
 var routes = require('./routes/index');
