@@ -6,6 +6,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   // var leagues = data['fantasy_content']['users'][0]['user'][1]['games'][0]['game'][1]['leagues'][0]['league'];
   // res.render('index', { title: 'Express', leagues: leagues });
+  console.log(req.session);
   res.render('index', { title: 'Express' });
 });
 
