@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+{{#if players}}
+  <h2>Availble Players</h2>
+  <ul>
+  {{#each players}}
+    <li>{{this.player[0][2].name.full}}</li>
+  {{/each}}
+  </ul>
+{{else}}
+  <h2>Sorry...</h2>
+  <p>No players found. <a href="/">Go to home page</a></p>
+{{/if}}
