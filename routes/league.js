@@ -21,7 +21,7 @@ router.get('/:id/players', function(req, res, next) {
   var leagueID = req.params.id;
 
   fantasysports.request(req, res)
-    .api('http://fantasysports.yahooapis.com/fantasy/v2/league/' + leagueID + '/players;status=A?format=json')
+    .api('http://fantasysports.yahooapis.com/fantasy/v2/league/' + leagueID + '/players;status=A;start=0;count=100?format=json')
     .done(function(data) {
       // var players = data['fantasy_content'].league[1].players;
       var playersObj = data['fantasy_content'].league[1].players;
