@@ -14,8 +14,6 @@ router.get('/:id', function(req, res, next) {
       // res.json(data);
       res.render('league', { title: league.name, league: league });
     });
-
-  // res.render('league', { title: leagueID });
 });
 
 module.exports = router;
