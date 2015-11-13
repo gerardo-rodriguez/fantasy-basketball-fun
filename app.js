@@ -21,8 +21,8 @@ var app = express();
 FantasySports.options({
   'accessTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_request_token',
   'requestTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_token',
-  'oauthKey': process.env['OAUTH-KEY'],
-  'oauthSecret': process.env['OAUTH-SECRET'],
+  'oauthKey': process.env.OAUTH_KEY,
+  'oauthSecret': process.env.OAUTH_SECRET,
   'version': '1.0',
   'callback': 'http://fantasy-basketball-fun.herokuapp.com/auth/oauth/callback',
   'encryption': 'HMAC-SHA1'
