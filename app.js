@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 // Add OAuth modules
 var FantasySports = require('fantasysports');
 var session = require('express-session');
-
+// Our routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var oauth = require('./routes/oauth');
