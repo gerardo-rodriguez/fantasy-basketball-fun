@@ -15,8 +15,11 @@ var callback = require('./routes/callback');
 var go = require('./routes/go');
 var leagues = require('./routes/leagues');
 var league = require('./routes/league');
+var leaguesAPI = require('./routes/leagues.api');
 
 var app = express();
+
+// console.log('process.env.OAUTH_SECRET', process.env.OAUTH_SECRET);
 
 FantasySports.options({
   'accessTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_request_token',
@@ -52,6 +55,8 @@ app.use('/auth/oauth/callback', callback);
 app.use('/go', go);
 app.use('/leagues/', leagues);
 app.use('/league/', league);
+
+app.use('/api/leagues', leaguesAPI)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
