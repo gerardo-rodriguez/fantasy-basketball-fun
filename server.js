@@ -1,3 +1,6 @@
+'use strict';
+
+var config = require('./config');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,31 +11,30 @@ var bodyParser = require('body-parser');
 var FantasySports = require('fantasysports');
 var session = require('express-session');
 // Our routes
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var oauth = require('./routes/oauth');
-var callback = require('./routes/callback');
-var go = require('./routes/go');
-var leagues = require('./routes/leagues');
-var league = require('./routes/league');
-var leaguesAPI = require('./routes/leagues.api');
+var routes = require('./server-side/routes/index');
+var users = require('./server-side/routes/users');
+var oauth = require('./server-side/routes/oauth');
+var callback = require('./server-side/routes/callback');
+var go = require('./server-side/routes/go');
+var leagues = require('./server-side/routes/leagues');
+var league = require('./server-side/routes/league');
+var leaguesAPI = require('./server-side/routes/leagues.api');
 
 var app = express();
 
-// console.log('process.env.OAUTH_SECRET', process.env.OAUTH_SECRET);
-
+// Set up the oauth settings.
 FantasySports.options({
-  'accessTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_request_token',
-  'requestTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_token',
+  'accessTokenUrl': config.yahoo.accessTokenUrl,
+  'requestTokenUrl': config.yahoo.requestTokenUrl,
   'oauthKey': process.env.OAUTH_KEY,
   'oauthSecret': process.env.OAUTH_SECRET,
-  'version': '1.0',
-  'callback': 'http://fantasy-basketball-fun.herokuapp.com/auth/oauth/callback',
-  'encryption': 'HMAC-SHA1'
+  'version': config.yahoo.version,
+  'callback': config.yahoo.callbackUrl,
+  'encryption': config.yahoo.encryption
 });
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'server-side/views'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
@@ -43,7 +45,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Required
 app.use(session({
-  secret: 'something something secret',
+  secret: config.session.secret,
   resave: false,
   saveUninitialized: false
 }));
@@ -56,7 +58,7 @@ app.use('/go', go);
 app.use('/leagues/', leagues);
 app.use('/league/', league);
 
-app.use('/api/leagues', leaguesAPI)
+app.use('/api/leagues', leaguesAPI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
