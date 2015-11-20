@@ -43,7 +43,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-// Required
+// Required for the session
 app.use(session({
   secret: config.session.secret,
   resave: false,
@@ -51,6 +51,7 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// App routes
 app.use('/', routes);
 app.use('/auth/oauth', oauth);
 app.use('/auth/oauth/callback', callback);
