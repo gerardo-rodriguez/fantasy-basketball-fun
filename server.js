@@ -19,8 +19,6 @@ var leaguesAPI = require('./routes/leagues.api');
 
 var app = express();
 
-// console.log('process.env.OAUTH_SECRET', process.env.OAUTH_SECRET);
-
 FantasySports.options({
   'accessTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_request_token',
   'requestTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_token',
@@ -47,6 +45,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+// Include static assets
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
