@@ -1,3 +1,6 @@
+'use strict';
+
+var config = require('./config');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -20,18 +23,19 @@ var leaguesAPI = require('./routes/leagues.api');
 var app = express();
 
 FantasySports.options({
-  'accessTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_request_token',
-  'requestTokenUrl': 'https://api.login.yahoo.com/oauth/v2/get_token',
+  'accessTokenUrl': config.yahoo.accessTokenUrl,
+  'requestTokenUrl': config.yahoo.requestTokenUrl,
   'oauthKey': process.env.OAUTH_KEY,
   'oauthSecret': process.env.OAUTH_SECRET,
-  'version': '1.0',
-  'callback': 'http://fantasy-basketball-fun.herokuapp.com/auth/oauth/callback',
-  'encryption': 'HMAC-SHA1'
+  'version': config.yahoo.version,
+  'callback': config.yahoo.callbackUrl,
+  'encryption': config.yahoo.encryption
 });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -41,7 +45,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Required
 app.use(session({
-  secret: 'something something secret',
+  secret: config.session.secret,
   resave: false,
   saveUninitialized: false
 }));
@@ -55,7 +59,7 @@ app.use('/go', go);
 app.use('/leagues/', leagues);
 app.use('/league/', league);
 
-app.use('/api/leagues', leaguesAPI)
+app.use('/api/leagues', leaguesAPI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   if (req.session.oauthAccessToken !== undefined) {
     res.redirect('/leagues');
   } else {
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: 'Express', name: 'Gerardo' });
   }
 });
 
