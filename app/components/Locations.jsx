@@ -5,14 +5,13 @@ var LocationStore = require('../app/stores/LocationStore');
 
 var Locations = React.createClass({
   getInitialState() {
-    // return LocationStore.getState();
-    console.log('GERARDO WAS HERE');
+    return LocationStore.getState();
   },
 
   componentDidMount() {
-    // LocationStore.listen(this.onChange);
+    LocationStore.listen(this.onChange);
 
-    // LocationActions.fetchLocations();
+    LocationActions.fetchLocations();
   },
 
   componentWillUnmount() {
