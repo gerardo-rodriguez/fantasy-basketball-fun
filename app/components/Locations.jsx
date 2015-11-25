@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var LocationStore = require('../app/stores/LocationStore');
+var LocationStore = require('../stores/LocationStore');
 
 var Locations = React.createClass({
   getInitialState() {
@@ -24,17 +24,17 @@ var Locations = React.createClass({
 
   render() {
 
-    if (this.state.errorMessage) {
-      return (<div>Something is wrong. {this.state.errorMessage}</div>);
-    }
-
-    if (!this.state.locations.length) {
-      return (
-        <div>
-          <img src="/my-cool-spinner.gif" />
-        </div>
-      );
-    }
+    // if (this.state.errorMessage) {
+    //   return (<div>Something is wrong. {this.state.errorMessage}</div>);
+    // }
+    //
+    // if (!this.state.locations.length) {
+    //   return (
+    //     <div>
+    //       <img src="/my-cool-spinner.gif" />
+    //     </div>
+    //   );
+    // }
 
     return (
       <ul>

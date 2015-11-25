@@ -6,6 +6,7 @@
 
 var React = require('react');
 var DefaultLayout = require('./layouts/default');
+// var Locations = require('../app/components/Locations');
 
 var HelloMessage = React.createClass({
   render: function() {
