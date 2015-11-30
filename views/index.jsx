@@ -6,14 +6,15 @@
 
 var React = require('react');
 var DefaultLayout = require('./layouts/default');
-// var Locations = require('../app/components/Locations');
+var Locations = require('./components/Locations');
 
 var HelloMessage = React.createClass({
-  render: function() {
+  render() {
     return (
       <DefaultLayout title={this.props.title}>
         <h1>{this.props.title}</h1>
         <p>Hello {this.props.name}, welcome to {this.props.title}</p>
+        <Locations />
       </DefaultLayout>
     );
   }

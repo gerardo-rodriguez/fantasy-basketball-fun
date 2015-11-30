@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var LocationStore = require('../stores/LocationStore');
+var LocationStore = require('../../app/stores/LocationStore');
 
 var Locations = React.createClass({
   getInitialState() {
@@ -37,13 +37,16 @@ var Locations = React.createClass({
     // }
 
     return (
-      <ul>
-        {this.state.locations.map((location) => {
-          return (
-            <li>{location.name}</li>
-          );
-        })}
-      </ul>
+      <div>
+        <h3>Locations listed below:</h3>
+        <ul>
+          {this.state.locations.map((location) => {
+            return (
+              <li>{location.name}</li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 });

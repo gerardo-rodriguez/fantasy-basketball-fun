@@ -1,14 +1,15 @@
 'use strict';
 
 var alt = require('../alt');
+var LocationSource = require('../sources/LocationSource');
 
-class LocationActions {
+var LocationActions = alt.createActions({
 
-  updateLocations(locations) {
+  updateLocations: function (locations) {
     this.dispatch(locations);
-  }
+  },
 
-  fetchLocations() {
+  fetchLocations: function () {
     // we dispatch an even here so we can have "loading" state
     this.dispatch();
 
@@ -20,17 +21,18 @@ class LocationActions {
       .catch((errorMessage) => {
         this.actions.locationsFailed(errorMessage);
       });
-  }
+  },
 
-  locationsFailed(errorMessage) {
+  locationsFailed: function (errorMessage) {
     this.dispatch(errorMessage);
-  }
+  },
 
-  favoriteLocation(locationId) {
+  favoriteLocation: function (locationId) {
     this.dispatch(locationId);
   }
 
-}
+});
 
 // Export the created actions
-module.exports = alt.createActions(LocationActions);
+// module.exports = alt.createActions(LocationActions);
+module.exports = LocationActions;

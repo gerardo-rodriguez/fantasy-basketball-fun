@@ -3,18 +3,33 @@
 var alt = require('../alt');
 var LocationActions = require('../actions/LocationActions');
 
-class FavoritesStore {
-  constructor() {
-    this.locations = [];
+var FavoritesStore = alt.createStore({
+  displayName: 'FavoritesStore',
 
-    this.bindListeners({
-      addFavoriteLocation: LocationActions.FAVORITE_LOCATION
-    });
+  bindListeners: {
+    addFavoriteLocation: LocationActions.favoriteLocation
+  },
+
+  state: {
+    location: []
+  },
+
+  publicMethods: {
+
+  },
+
+  // constructor() {
+  //   this.locations = [];
+  //
+  //   this.bindListeners({
+  //     addFavoriteLocation: LocationActions.FAVORITE_LOCATION
+  //   });
+  // }
+
+  addFavoriteLocation: function (location) {
+    this.state.locations.push(location);
   }
+});
 
-  addFavoriteLocation(location) {
-    this.locations.push(location);
-  }
-}
-
-module.exports = alt.createStore(FavoritesStore, 'FavoritesStore');
+// module.exports = alt.createStore(FavoritesStore, 'FavoritesStore');
+module.exports = FavoritesStore;

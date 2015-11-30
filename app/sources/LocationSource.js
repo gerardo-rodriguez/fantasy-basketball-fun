@@ -26,5 +26,7 @@ var LocationSource = {
         resolve(mockData);
       }, 250);
     });
+
+    // return mockData;
   }
 };
