@@ -30,3 +30,5 @@ var LocationSource = {
     // return mockData;
   }
 };
+
+module.exports = LocationSource;
