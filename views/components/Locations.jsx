@@ -2,6 +2,7 @@
 
 var React = require('react');
 var LocationStore = require('../../app/stores/LocationStore');
+var LocationActions = require('../../app/actions/LocationActions');
 
 var Locations = React.createClass({
   getInitialState() {
@@ -9,6 +10,8 @@ var Locations = React.createClass({
   },
 
   componentDidMount() {
+  // componentWillMount() {
+    console.log('GERARDO!!!');
     LocationStore.listen(this.onChange);
 
     LocationActions.fetchLocations();
