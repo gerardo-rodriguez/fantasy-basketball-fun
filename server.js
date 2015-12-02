@@ -2,6 +2,7 @@
 
 var config = require('./config');
 var express = require('express');
+var hbs = require('express-handlebars');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -33,9 +34,11 @@ FantasySports.options({
 });
 
 // view engine setup
+app.engine('handlebars', hbs({
+  defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine());
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
