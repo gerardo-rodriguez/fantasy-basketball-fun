@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 var FantasySports = require('fantasysports');
 var session = require('express-session');
 // Our routes
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var users = require('./routes/users');
 var oauth = require('./routes/oauth');
 var callback = require('./routes/callback');
@@ -52,7 +52,7 @@ app.use(session({
 // Include static assets
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', index);
 app.use('/auth/oauth', oauth);
 app.use('/auth/oauth/callback', callback);
 app.use('/go', go);
