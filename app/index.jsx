@@ -5,7 +5,7 @@
 // var Note = require('./components/Note');
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Note from './components/Note';
+import TeamList from './components/TeamList';
 
 main();
 
@@ -13,5 +13,5 @@ function main() {
   var app = document.createElement('div');
   document.body.appendChild(app);
 
-  ReactDOM.render(<Note />, app);
+  ReactDOM.render(<TeamList />, app);
 }

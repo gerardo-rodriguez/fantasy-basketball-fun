@@ -16,6 +16,7 @@
     "fantasysports": "^0.3.0",
     "lodash": "^3.10.1",
     "morgan": "~1.6.1",
+    "reqwest": "^2.0.5",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
