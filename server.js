@@ -20,6 +20,7 @@ var go = require('./routes/go');
 var leagues = require('./routes/leagues');
 var league = require('./routes/league');
 var leaguesAPI = require('./routes/leagues.api');
+var react = require('./routes/react');
 
 var app = express();
 
@@ -61,6 +62,7 @@ app.use('/auth/oauth/callback', callback);
 app.use('/go', go);
 app.use('/leagues/', leagues);
 app.use('/league/', league);
+app.use('/react', react);
 
 app.use('/api/leagues', leaguesAPI);
 

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "webpack -p && node ./bin/www",
-    "dev": "webpack --watch && node ./bin/www",
+    "dev": "node ./bin/www",
     "debug": "DEBUG=fantasy-basketball-fun:* npm start"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
     "express-handlebars": "^2.0.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
