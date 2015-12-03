@@ -16,10 +16,9 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var oauth = require('./routes/oauth');
 var callback = require('./routes/callback');
-var go = require('./routes/go');
 var leagues = require('./routes/leagues');
 var league = require('./routes/league');
-var leaguesAPI = require('./routes/leagues.api');
+var leaguesAPI = require('./routes/api/leagues');
 var react = require('./routes/react');
 
 var app = express();
@@ -56,14 +55,16 @@ app.use(session({
 // Include static assets
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Set up the routes!
 app.use('/', index);
+// OAuth routes
 app.use('/auth/oauth', oauth);
 app.use('/auth/oauth/callback', callback);
-app.use('/go', go);
+// Learning routes to test stuff
 app.use('/leagues/', leagues);
 app.use('/league/', league);
 app.use('/react', react);
-
+// API routes
 app.use('/api/leagues', leaguesAPI);
 
 // catch 404 and forward to error handler
