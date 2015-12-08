@@ -19675,9 +19675,14 @@
 
 	var _reqwest2 = _interopRequireDefault(_reqwest);
 
+	var _config = __webpack_require__(162);
+
+	var _config2 = _interopRequireDefault(_config);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var API_URL = 'http://www.mocky.io/v2/5660921e1200009244abd950';
+	// TODO: Make league ID dynamic
+	var API_URL = _config2.default.app.apiURL + 'leagues/353.l.104969/teams';
 
 	var TeamList = _react2.default.createClass({
 	  displayName: 'TeamList',
@@ -19689,13 +19694,14 @@
 	  },
 
 	  componentDidMount: function componentDidMount() {
+	    // TODO: Figure out 'loading' delay. What to display? How to handle?
 	    (0, _reqwest2.default)({
 	      url: API_URL,
-	      type: 'jsonp',
+	      type: 'json',
 	      success: (function (resp) {
 	        console.log('respONSE', resp);
 	        this.setState({
-	          "teams": resp.teams
+	          "teams": resp.data.teams
 	        });
 	      }).bind(this),
 	      error: (function (err) {
@@ -20365,6 +20371,32 @@
 /***/ function(module, exports) {
 
 	/* (ignored) */
+
+/***/ },
+/* 162 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var config = {
+	  app: {
+	    apiURL: 'http://fantasy-basketball-fun.herokuapp.com:3000/api/'
+	  },
+	  yahoo: {
+	    accessTokenUrl: 'https://api.login.yahoo.com/oauth/v2/get_request_token',
+	    requestTokenUrl: 'https://api.login.yahoo.com/oauth/v2/get_token',
+	    callbackUrl: 'http://fantasy-basketball-fun.herokuapp.com/auth/oauth/callback',
+	    version: '1.0',
+	    encryption: 'HMAC-SHA1',
+	    apiURL: 'http://fantasysports.yahooapis.com/fantasy/v2/'
+	  },
+	  session: {
+	    secret: 'top-notch secret stuff here, mijo'
+	  }
+	};
+
+	module.exports = config;
+
 
 /***/ }
 /******/ ]);

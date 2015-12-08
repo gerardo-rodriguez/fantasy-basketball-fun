@@ -1,9 +1,12 @@
+'use strict';
+
 var express = require('express');
 var fantasysports = require('fantasysports');
-var config = require('../config');
+var config = require('../../config');
+var cleanup = require('../../utility/cleanup');
 var router = express.Router();
 
-/* GET leagues page. */
+/* GET responds with all the leagues for the current user */
 router.get('/', function(req, res, next) {
   fantasysports.request(req, res)
     .api(config.yahoo.apiURL + 'users;use_login=1/games;game_keys=nba/leagues?format=json')
@@ -14,6 +17,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
+/* GET responds with data for a specific league */
 router.get('/:id', function(req, res, next) {
   var leagueID = req.params.id;
 
@@ -26,15 +30,22 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+/* GET responds with basic data for all teams within a specific league */
 router.get('/:id/teams', function(req, res, next) {
   var leagueID = req.params.id;
 
   fantasysports.request(req, res)
     .api(config.yahoo.apiURL + 'league/' + leagueID + '/teams?format=json')
     .done(function(data) {
-      // var league = data['fantasy_content'].league[0];
+      var teamsData = cleanup.teams(data);
 
-      res.json(data);
+      var response = {
+        'data': {
+          'teams': teamsData
+        }
+      };
+
+      res.json(response);
     });
 });
 

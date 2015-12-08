@@ -16,7 +16,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
         // Limit the ES2015->ES5 transpile to only our app directory
         include: PATHS.app

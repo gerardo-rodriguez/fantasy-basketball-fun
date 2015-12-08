@@ -2,8 +2,10 @@
 
 import React from 'react';
 import reqwest from 'reqwest';
+import config from '../../config';
 
-const API_URL = 'http://www.mocky.io/v2/5660921e1200009244abd950';
+// TODO: Make league ID dynamic
+const API_URL = config.app.apiURL + 'leagues/353.l.104969/teams';
 
 var TeamList = React.createClass({
   getInitialState: function() {
@@ -13,13 +15,14 @@ var TeamList = React.createClass({
   },
 
   componentDidMount: function() {
+    // TODO: Figure out 'loading' delay. What to display? How to handle?
     reqwest({
       url: API_URL,
-      type: 'jsonp',
+      type: 'json',
       success: function (resp) {
         console.log('respONSE', resp);
         this.setState({
-          "teams": resp.teams
+          "teams": resp.data.teams
         });
       }.bind(this),
       error: function(err) {

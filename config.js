@@ -1,6 +1,9 @@
 'use strict';
 
 var config = {
+  app: {
+    apiURL: 'http://fantasy-basketball-fun.herokuapp.com:3000/api/'
+  },
   yahoo: {
     accessTokenUrl: 'https://api.login.yahoo.com/oauth/v2/get_request_token',
     requestTokenUrl: 'https://api.login.yahoo.com/oauth/v2/get_token',
