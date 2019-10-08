@@ -16,7 +16,7 @@
     "hbs": "~3.1.0",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.3",
-    "snyk": "^1.30.1"
+    "snyk": "^1.232.0"
   },
   "snyk": true
 }
